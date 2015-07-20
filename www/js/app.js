@@ -6,12 +6,18 @@
 angular.module('todo', ['ionic'])
 
 .controller('TodoCtrl', function($scope) {
-  $scope.tasks = [
-  { title: 'Collect coin'},
-  { title: 'Eat mushrooms'},
-  { title: 'Get high enough to grab the flag'},
-  { title: 'Find the Princess'}
-  ];
+  // No need for testing data anymore
+  $scope.tasks = [];
+
+  // Create and load the modal
+  $ionicModal.fromTemplateUrl('newstask.html', function(modal) {
+    $scope.taskModal = modal;
+  }, {
+    scope: $scope,
+    animation: 'slide-in-up'
+  });
+
+
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
